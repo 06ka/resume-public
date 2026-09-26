@@ -553,6 +553,183 @@
     .summary { padding: 24px; }
     .timeline-header { flex-direction: column; }
   }
+
+  /* ===== 2026-09 visual refresh ===== */
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: var(--primary);
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .summary .lead {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.6;
+    opacity: 1;
+  }
+
+  .highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 24px 0;
+  }
+
+  .hl {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+
+  .hl .num {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #93c5fd;
+  }
+
+  .hl .num small {
+    font-size: 14px;
+    margin-left: 2px;
+    color: #fff;
+  }
+
+  .hl .label {
+    display: block;
+    font-size: 12px;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+
+  .summary .points {
+    list-style: none;
+    padding: 0;
+  }
+
+  .summary .points li {
+    font-size: 14px;
+    opacity: 0.92;
+    padding: 4px 0 4px 18px;
+    position: relative;
+    line-height: 1.7;
+  }
+
+  .summary .points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 8px;
+    height: 2px;
+    background: #93c5fd;
+  }
+
+  /* One accent color: only role tags are colored */
+  .meta-tag {
+    background: #f1f5f9;
+    color: #64748b;
+  }
+
+  .meta-tag.role {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+  }
+
+  /* Strengths: single column, no empty space */
+  .strengths {
+    grid-template-columns: 1fr;
+  }
+
+  .strength-card h3 {
+    font-size: 16px;
+  }
+
+  .strength-card p {
+    color: var(--text);
+  }
+
+  /* Bullet emphasis */
+  .sub-project li strong {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  /* Featured projects */
+  .sub-project.featured {
+    border-left: 4px solid var(--accent);
+    padding: 20px 20px 20px 22px;
+  }
+
+  .sub-project.featured h4 {
+    font-size: 16px;
+  }
+
+  .sub-project.featured li {
+    font-size: 13.5px;
+    color: var(--text);
+  }
+
+  .sub-project.featured li::before {
+    opacity: 1;
+  }
+
+  /* Minor / older items */
+  .sub-project.minor {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .sub-project.minor h4 {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .sub-project.minor .project-table,
+  .sub-project.minor li {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .sub-project.minor .project-table td {
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 640px) {
+    .highlights { grid-template-columns: 1fr; }
+  }
+
+  /* Print / PDF */
+  @page {
+    size: A4;
+    margin: 14mm 12mm;
+  }
+
+  @media print {
+    html, body {
+      background: #fff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .container { max-width: none; padding: 0; }
+    .header { margin-bottom: 24px; }
+    .strength-card, .sub-project, .skill-category, .hl { box-shadow: none; }
+    html { zoom: 0.85; }
+    .summary, .skill-category, .hl { break-inside: avoid; }
+    .footer { display: none; }
+    li, tr, .episode, .sub-project-header, .strength-card h3, .strength-card p { break-inside: avoid; }
+    .section-title, .timeline-header, .timeline-meta, .sub-project-header, .sub-project-meta, .strength-card summary { break-after: avoid; }
+    .section { margin-bottom: 28px; }
+    .strength-card summary { cursor: default; }
+    .strength-card summary::before { content: '' !important; }
+    .strength-card:hover { box-shadow: none; }
+    .footer { margin-top: 32px; }
+  }
 </style>
 </head>
 <body>
@@ -579,50 +756,49 @@
 
   <!-- Summary -->
   <div class="summary">
-    <p><strong>業務の要望から本当の目的を聞き出し、仕様に落として、リリースまで持っていく仕事を続けてきました。</strong></p>
-    <p>農業流通の法人営業を3年経験したあと、エンジニアに転じて6年になります（受託開発、フリーランス、現職のヘルスケア企業）。そのうち直近3年はヘルスケア・治験領域が中心です。治験管理システムでは、名目上のPMが機能していない中で、CS担当者へのヒアリングから要件定義、ワイヤーフレーム、デザイナーとの連携、外国人エンジニアへの英語でのタスクアサイン、自身の実装までを一人で通して担当しました。現職ではPM兼開発として、大手製薬企業のウェアラブル機器の連携機能について、SDKの仕様調査、要件定義、スケジュール・進捗管理、ワイヤーフレームでのクライアントとの合意、バックエンドのデータ設計の見直し、実装、受け入れテストの通過までを一通り担当しています。</p>
-    <p>実装はFlutterを中心に、Swift・Kotlin・サーバーサイドまで経験があります。営業時代から、業務の仕組みを分解して、手作業をExcel/VBAで自動化するなど、頼まれる前に問題を見つけて解決してきました。</p>
-    <div class="keywords">
-      <span class="keyword">要件定義</span>
-      <span class="keyword">プロダクトマネジメント</span>
-      <span class="keyword">ヘルスケア・治験</span>
-      <span class="keyword">プロジェクト推進</span>
-      <span class="keyword">モバイルアプリ開発</span>
-      <span class="keyword">英語コミュニケーション</span>
-      <span class="keyword">AI活用</span>
+    <p class="lead">業務の要望から本当の目的を聞き出し、仕様に落として、リリースまで持っていく仕事を続けてきました。</p>
+    <div class="highlights">
+      <div class="hl"><span class="num">6<small>年</small></span><span class="label">エンジニア経験（その前に法人営業3年）</span></div>
+      <div class="hl"><span class="num">3<small>年</small></span><span class="label">ヘルスケア・治験領域</span></div>
+      <div class="hl"><span class="num">2<small>案件</small></span><span class="label">PM兼開発（治験管理システム／大手製薬企業のウェアラブル連携）</span></div>
     </div>
+    <ul class="points">
+      <li>治験管理システムと現職のウェアラブル連携で、PM兼開発として、ヒアリング・要件定義・ワイヤーフレームでの合意形成・スケジュール管理から実装・リリースまでを担当</li>
+      <li>要望をそのまま作らず、何を解決したいのかを聞き出して別の解に組み替える。進行中の設計の問題も自分で見つけて代案を出す</li>
+      <li>実装はFlutterを中心にSwift・Kotlin・サーバーサイドまで。外国人エンジニアへの英語でのタスクアサインも実務で経験</li>
+    </ul>
   </div>
 
   <!-- Strengths -->
   <div class="section">
-    <h2 class="section-title">Strengths</h2>
+    <h2 class="section-title">強み</h2>
     <div class="strengths">
       <div class="strength-card">
         <div class="strength-num">01</div>
         <h3>要望の裏にある目的を聞き出し、仕様に直す力</h3>
         <p>「○○の画面がほしい」という要望をそのまま作るのではなく、何を解決したいのかを聞き出し、実装の負担が小さい別の解に組み替えます。認識を合わせるときは、口頭やテキストで済ませず、ワイヤーフレームや図などの具体物を先に見せて、相手の本音を引き出します。</p>
-        <details>
+        <details open>
           <summary>治験管理システムでの要件定義</summary>
           <div class="episode">治験現場に詳しいがシステム開発に疎い担当者から要件を引き出す際、「○○の画面がほしい」という要望を鵜呑みにせず意図を深掘り。根本の要望は「ミスを防ぎたい」「情報を一目で把握したい」というレベルだと特定し、実装負担の低い別の解決策を提案できた。</div>
         </details>
         <details>
-          <summary>3次元空間の仕様確認（小売案件）</summary>
-          <div class="episode">棚割管理の「商品を削除したら残りを詰める」という仕様を確認する際、3次元空間の話をテキストで1つずつ確認しても認識ずれが必ず出ると判断。Excelで27個の立方体を配置し、削除時にどの立方体がどこに動くかを見せながら仕様を確定させた。</div>
+          <summary>データ取得の設計を見直して提案（現職）</summary>
+          <div class="episode">ウェアラブルパッチを約1週間で交換する運用を踏まえ、バックエンドのデータ取得の設計（カーソル1つで全データを扱う設計）が交換に対応していないことを指摘し、パッチごとにカーソルを持つ設計を提案・採用された。</div>
         </details>
         <details>
           <summary>SDK仕様と要望からワイヤーフレームで合意（現職）</summary>
           <div class="episode">SDKの仕様と営業・クライアントの大まかな要望を突き合わせ、AIでワイヤーフレームを作ってから合意を取った。</div>
         </details>
         <details>
-          <summary>データ取得の設計を見直して提案（現職）</summary>
-          <div class="episode">ウェアラブルパッチを約1週間で交換する運用を踏まえ、バックエンドのデータ取得の設計（カーソル1つで全データを扱う設計）が交換に対応していないことを指摘し、パッチごとにカーソルを持つ設計を提案・採用された。</div>
+          <summary>3次元空間の仕様確認（小売案件）</summary>
+          <div class="episode">棚割管理の「商品を削除したら残りを詰める」という仕様を確認する際、3次元空間の話をテキストで1つずつ確認しても認識ずれが必ず出ると判断。Excelで27個の立方体を配置し、削除時にどの立方体がどこに動くかを見せながら仕様を確定させた。</div>
         </details>
       </div>
       <div class="strength-card">
         <div class="strength-num">02</div>
         <h3>業務と業界の構造を見抜く力</h3>
         <p>表に見えている事象の裏で、何がどう動いているのかを分解して、問題の本当の原因を特定します。</p>
-        <details>
+        <details open>
           <summary>営業時代：業界構造の分析</summary>
           <div class="episode">コメ卸が担う3つの機能（精米・配送・集金）を分解し、「中間業者を省けばコストが下がる」という通説が成り立たない理由を分析した。</div>
         </details>
@@ -635,11 +811,11 @@
           <div class="episode">他のエンジニアが数週間解決できなかったバグを、ユースケースを洗い出して数日で特定・修正した。</div>
         </details>
       </div>
-      <div class="strength-card wide">
+      <div class="strength-card">
         <div class="strength-num">03</div>
         <h3>PMが機能していない現場でもリリースまで持っていく力</h3>
         <p>PMの不在や人手不足で本来の体制が回っていないとき、自分から問題を定義し、役割を組み直してプロジェクトを前に進めます。未経験の技術でも、全体像を先につかんでから細部に入る方法で短期間でキャッチアップします。</p>
-        <details>
+        <details open>
           <summary>PM不在でリリースを主導（ヘルスケア案件）</summary>
           <div class="episode">PMが実質不在の状態でバグだらけのリリース前プロジェクトに参画。「ビジネスサイドが本当に知りたいのはいつリリースできるか」と自分で判断し、残バグの全量把握→消化ペースからのスケジュール試算→ステークホルダーへの報告を自発的に実施。難易度別にタスクを振り分けてボトルネックを最小化し、リリースまで完遂した。</div>
         </details>
@@ -657,7 +833,7 @@
 
   <!-- Career -->
   <div class="section">
-    <h2 class="section-title">Career</h2>
+    <h2 class="section-title">職務経歴</h2>
     <div class="timeline">
 
       <!-- Current -->
@@ -668,12 +844,11 @@
           <span class="timeline-period">2025/08 - 現在</span>
         </div>
         <div class="timeline-meta">
-          <span class="meta-tag role">正社員</span>
+          <span class="meta-tag role">正社員 / PM兼開発</span>
           <span class="meta-tag">ヘルスケア（臨床試験向けアプリ）</span>
           <span class="meta-tag">Swift / Flutter / Kotlin / Python</span>
         </div>
-        <p class="timeline-desc">役割：PM兼開発</p>
-        <div class="sub-project">
+        <div class="sub-project featured">
           <div class="sub-project-header">
             <h4>大手製薬企業のウェアラブルパッチ連携機能</h4>
             <span class="sub-project-period">2026/01 - 現在</span>
@@ -684,13 +859,13 @@
             <span class="meta-tag">Swift / Flutter</span>
           </div>
           <ul>
-            <li>皮膚に貼るセンサー機器のSDK仕様をAIで読み解き、営業・クライアントから来た大まかな機能要望と突き合わせて、画面の要件に落とした</li>
-            <li>ワイヤーフレームをAIとMermaid＋アスキーアートで作成してデザイナーに渡し、上がってきたデザインを添削した。営業の確認を経てクライアントに提示し、要望を反映して合意まで持っていった</li>
-            <li>スケジュールを引いて進捗を管理し、もう1名のエンジニアとの分担を決めた</li>
-            <li>機器メーカーのSDK（Swift）を自社のSwiftライブラリに組み込み、ブリッジでFlutterライブラリにつなぎ、自社アプリに統合した。この3層構成を、もう1名のエンジニアと分担して実装した</li>
-            <li>バックエンドエンジニアに要件を伝えてAPIを設計してもらったが、開発の途中でデータのカーソル設計に問題があると分かった。パッチは約1週間で交換するのに、当初の設計はカーソル1つで全データを扱っており、新旧パッチの切り替えに対応していなかった。ユーザー×指標（約8種）×パッチごとにカーソルを持つ設計を提案し、採用された</li>
-            <li>Bluetoothで受信した計測データのサーバー送信と、機器のバッテリー残量・皮膚との接触状態のアプリ内表示を実装した</li>
-            <li>クライアントの受け入れテストを通過。現在は臨床試験での運用開始待ち</li>
+            <li><strong>SDK仕様から画面要件を作成：</strong>皮膚に貼るセンサー機器のSDK仕様をAIで読み解き、営業・クライアントから来た大まかな機能要望と突き合わせて、画面の要件に落とした</li>
+            <li><strong>ワイヤーフレームで合意形成：</strong>ワイヤーフレームをAIとMermaid＋アスキーアートで作成してデザイナーに渡し、上がってきたデザインを添削した。営業の確認を経てクライアントに提示し、要望を反映して合意まで持っていった</li>
+            <li><strong>スケジュール・分担の管理：</strong>スケジュールを引いて進捗を管理し、もう1名のエンジニアとの分担を決めた</li>
+            <li><strong>設計の問題を指摘し、代案が採用：</strong>バックエンドエンジニアに要件を伝えてAPIを設計してもらったが、開発の途中でデータのカーソル設計に問題があると分かった。パッチは約1週間で交換するのに、当初の設計はカーソル1つで全データを扱っており、新旧パッチの切り替えに対応していなかった。ユーザー×指標（約8種）×パッチごとにカーソルを持つ設計を提案し、採用された</li>
+            <li><strong>3層構成で実装：</strong>機器メーカーのSDK（Swift）を自社のSwiftライブラリに組み込み、ブリッジでFlutterライブラリにつなぎ、自社アプリに統合した。この3層構成を、もう1名のエンジニアと分担して実装した</li>
+            <li><strong>計測データの連携と表示：</strong>Bluetoothで受信した計測データのサーバー送信と、機器のバッテリー残量・皮膚との接触状態のアプリ内表示を実装した</li>
+            <li><strong>受け入れテスト通過：</strong>クライアントの受け入れテストを通過。現在は臨床試験での運用開始待ち</li>
           </ul>
         </div>
         <div class="sub-project">
@@ -701,8 +876,8 @@
           <ul>
             <li>Flutterアプリ、Flutter・Swift・Kotlinの社内ライブラリの追加開発・保守</li>
             <li>Pythonのバグ修正</li>
-            <li>SDKの設計上の問題（delegateの二重定義）について、AIで根拠を固めてレビューで指摘した</li>
-            <li>xcframeworkの署名の要否を検証した</li>
+            <li><strong>レビューでの指摘：</strong>SDKの設計上の問題（delegateの二重定義）について、AIで根拠を固めてレビューで指摘した</li>
+            <li><strong>技術検証：</strong>xcframeworkの署名の要否を検証した</li>
           </ul>
         </div>
       </div>
@@ -715,7 +890,7 @@
           <span class="timeline-period">2022/01 - 2025/07</span>
         </div>
         <div class="timeline-meta">
-          <span class="meta-tag role">業務委託</span>
+          <span class="meta-tag">業務委託</span>
         </div>
         <p class="timeline-desc">2022/11に法人設立。複数案件を並行で担当。</p>
 
@@ -733,7 +908,7 @@
           </ul>
         </div>
 
-        <div class="sub-project">
+        <div class="sub-project featured">
           <div class="sub-project-header">
             <h4>治験管理システム｜ヘルスケア企業B</h4>
             <span class="sub-project-period">2024/04 - 2024/12</span>
@@ -744,11 +919,11 @@
             <span class="meta-tag">Flutter / Vue.js / Laravel / MySQL</span>
           </div>
           <ul>
-            <li>名目上のPMが機能していない状態で、PM業務を実質的にすべて担当した</li>
-            <li>CS担当者へのヒアリング → 要件定義 → ワイヤーフレーム → デザイナー連携 → 外国人エンジニアへの英語でのタスクアサイン → 自身のFlutter実装まで、全工程を主導した</li>
-            <li>「○○の画面がほしい」という要望から「ミスを防ぎたい」という本来の課題を特定し、実装負担の低い解決策を提案した</li>
-            <li>ワイヤーフレームを使って、CS・デザイナー・エンジニア・顧客の間で仕様の認識を揃えた</li>
-            <li>治験業務の知識、実装の現実的な負担、使いやすさの3つを、自分が間に立ってまとめた</li>
+            <li><strong>PM業務を実質すべて担当：</strong>名目上のPMが機能していない状態で、PM業務を実質的にすべて担当した</li>
+            <li><strong>全工程を主導：</strong>CS担当者へのヒアリング → 要件定義 → ワイヤーフレーム → デザイナー連携 → 外国人エンジニアへの英語でのタスクアサイン → 自身のFlutter実装まで、全工程を主導した</li>
+            <li><strong>要望の裏の課題を特定：</strong>「○○の画面がほしい」という要望から「ミスを防ぎたい」という本来の課題を特定し、実装負担の低い解決策を提案した</li>
+            <li><strong>ワイヤーフレームで認識合わせ：</strong>CS・デザイナー・エンジニア・顧客の間で仕様の認識を揃えた</li>
+            <li><strong>3つの観点をまとめる：</strong>治験業務の知識、実装の現実的な負担、使いやすさの3つを、自分が間に立ってまとめた</li>
           </ul>
         </div>
 
@@ -763,9 +938,9 @@
             <span class="meta-tag">Flutter / Vue.js / Laravel / MySQL</span>
           </div>
           <ul>
-            <li>PMが機能せず、バグだらけのリリース前プロジェクトに参画した</li>
-            <li>「ビジネスサイドが本当に知りたいのはいつリリースできるか」と判断し、残バグの優先順位づけ → スケジュール試算 → ステークホルダーへの報告を自分から行った</li>
-            <li>難易度別にタスクを振り分けてボトルネックを減らし、リリースまで完遂した</li>
+            <li><strong>PM不在の中でリリースを主導：</strong>PMが機能せず、バグだらけのリリース前プロジェクトに参画した</li>
+            <li><strong>リリース時期を見立てて報告：</strong>「ビジネスサイドが本当に知りたいのはいつリリースできるか」と判断し、残バグの優先順位づけ → スケジュール試算 → ステークホルダーへの報告を自分から行った</li>
+            <li><strong>タスク配分でボトルネックを解消：</strong>難易度別にタスクを振り分けてボトルネックを減らし、リリースまで完遂した</li>
           </ul>
         </div>
 
@@ -779,14 +954,14 @@
             <span class="meta-tag">Flutter</span>
           </div>
           <ul>
-            <li>PMの意図を汲み取り、細かく指示されなくても自分で判断して実装を進めた</li>
-            <li>「シュッて飛び出てふわっと落ちる」という感覚的な要求を、アニメーションの座標計算に翻訳した</li>
-            <li>デザイナーとのやりとりを自分で回し、PMが世界観や方向性の判断に集中できる体制を作った</li>
-            <li>退職時に「Flutterエンジニアは探せるが、よしなに動いてくれるエンジニアを探すのは大変」と引き留められた</li>
+            <li><strong>自走して実装：</strong>PMの意図を汲み取り、細かく指示されなくても自分で判断して実装を進めた</li>
+            <li><strong>感覚的な要求を仕様に翻訳：</strong>「シュッて飛び出てふわっと落ちる」という要求を、アニメーションの座標計算に翻訳した</li>
+            <li><strong>PMの負担を減らす：</strong>デザイナーとのやりとりを自分で回し、PMが世界観や方向性の判断に集中できる体制を作った</li>
+            <li><strong>引き留め：</strong>退職時に「Flutterエンジニアは探せるが、よしなに動いてくれるエンジニアを探すのは大変」と引き留められた</li>
           </ul>
         </div>
 
-        <div class="sub-project">
+        <div class="sub-project minor">
           <div class="sub-project-header">
             <h4>その他の案件</h4>
           </div>
@@ -811,12 +986,25 @@
           <span class="timeline-period">2020/06 - 2021/12</span>
         </div>
         <div class="timeline-meta">
-          <span class="meta-tag role">正社員</span>
+          <span class="meta-tag">正社員</span>
           <span class="meta-tag">小売・観光</span>
           <span class="meta-tag">Kotlin / Rails / SpringBoot / Flutter / Vue.js / MySQL / AWS / Jenkins</span>
         </div>
 
         <div class="sub-project">
+          <div class="sub-project-header">
+            <h4>主な実績</h4>
+          </div>
+          <ul>
+            <li><strong>1年で評価される立場に：</strong>未経験で入社し、1年で「年数のわりにはできるほう」と評価されるポジションになった</li>
+            <li><strong>未経験のFlutterで炎上案件を支援：</strong>独学でキャッチアップしてバグを修正した</li>
+            <li><strong>図で仕様を確定：</strong>棚割管理の3次元の仕様をExcelで図にして、テキストでは合わせられなかった認識を揃えた</li>
+            <li><strong>難しいバグを数日で解決：</strong>他のエンジニアが数週間解決できなかったバグを、ユースケースを洗い出して数日で特定・修正した</li>
+            <li>未経験エンジニアへのFlutter指導、EC2の環境構築、JenkinsでのCI/CDパイプライン構築</li>
+          </ul>
+        </div>
+
+        <div class="sub-project minor">
           <div class="sub-project-header">
             <h4>主要プロジェクト（8案件）</h4>
           </div>
@@ -835,14 +1023,6 @@
               <tr><td>2020/07-09</td><td>棚卸システム改修</td><td>開発メンバー</td><td>2名</td></tr>
             </tbody>
           </table>
-          <ul style="margin-top: 12px;">
-            <li>未経験で入社し、1年で「年数のわりにはできるほう」と評価されるポジションになった</li>
-            <li>Flutter未経験で炎上案件のヘルプに入り、独学でキャッチアップしてバグを修正した</li>
-            <li>棚割管理の3次元の仕様をExcelで図にして、テキストでは合わせられなかった認識を揃えた</li>
-            <li>他のエンジニアが数週間解決できなかったバグを、ユースケースを洗い出して数日で特定・修正した</li>
-            <li>未経験エンジニアにFlutterを指導した</li>
-            <li>EC2の環境構築と、JenkinsでのCI/CDパイプライン構築を行った</li>
-          </ul>
         </div>
       </div>
 
@@ -854,18 +1034,18 @@
           <span class="timeline-period">2017/04 - 2020/04</span>
         </div>
         <div class="timeline-meta">
-          <span class="meta-tag role">正社員</span>
+          <span class="meta-tag">正社員</span>
           <span class="meta-tag">農業流通</span>
           <span class="meta-tag">コメの卸売法人営業</span>
         </div>
 
         <div class="sub-project">
           <ul>
-            <li>1年目：研修レポートで、コメ卸の業界構造を分析した（精米・配送・集金の3機能に分解）</li>
-            <li>2年目：共同計算から買取への集荷方法の移行期に事務を担当し、両方式の併存が構造的に破綻する仕組みであることを分析した</li>
-            <li>2年目：誰にも頼まれずに運賃請求チェックの問題を見つけ、Excel/VBAで仕組み化した</li>
-            <li>3年目：全量買取集荷の責任者に抜擢された。それまで感覚で出していた利益予想を、データからExcelで自動算出する仕組みを作った</li>
-            <li>3年目：先輩の休職に伴い、後輩との役割分担を自分で設計・指導し、繁忙期を乗り切った</li>
+            <li><strong>業界構造の分析（1年目）：</strong>研修レポートで、コメ卸の業界構造を精米・配送・集金の3機能に分解して分析した</li>
+            <li><strong>集荷方式の構造分析（2年目）：</strong>共同計算から買取への移行期に事務を担当し、両方式の併存が構造的に破綻する仕組みであることを分析した</li>
+            <li><strong>頼まれずに仕組み化（2年目）：</strong>運賃請求チェックの問題を自分で見つけ、Excel/VBAで仕組み化した</li>
+            <li><strong>集荷責任者に抜擢（3年目）：</strong>全量買取集荷の責任者として、感覚で出していた利益予想をデータからExcelで自動算出する仕組みを作った</li>
+            <li><strong>繁忙期の体制づくり（3年目）：</strong>先輩の休職に伴い、後輩との役割分担を自分で設計・指導し、繁忙期を乗り切った</li>
           </ul>
         </div>
       </div>
@@ -875,7 +1055,7 @@
 
   <!-- Skills -->
   <div class="section">
-    <h2 class="section-title">Skills</h2>
+    <h2 class="section-title">スキル</h2>
     <div class="skill-legend">
       <span><span class="legend-dot s"></span> S: ゼロから構築</span>
       <span><span class="legend-dot a"></span> A: 機能追加</span>
@@ -936,5 +1116,13 @@
   </footer>
 
 </div>
+<script>
+  // 印刷・PDF化のときは強みのエピソードをすべて開く
+  (function () {
+    function openAll() { document.querySelectorAll('details').forEach(function (d) { d.open = true; }); }
+    if (/[?&]print/.test(location.search)) openAll();
+    window.addEventListener('beforeprint', openAll);
+  })();
+</script>
 </body>
 </html>
